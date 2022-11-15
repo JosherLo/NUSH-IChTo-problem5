@@ -46,4 +46,14 @@ At the end of the simulation, the program writes all this data to a file.
 
 ## Visualisation
 
-Graphs obtained were visualised using mathematica.
+Graphs obtained were visualised using mathematica. 
+
+### Graphs
+
+This graph shows the volume of one substance released against the relative time.
+
+![Graph 1](./img/graph.png "Graph of one substance only")
+
+This graph shows the volume of 5 substance released against the relative time.
+
+![Graph 1](./img/total.png "Graph of 5 substances")
