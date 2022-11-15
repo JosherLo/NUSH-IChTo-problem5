@@ -38,7 +38,7 @@ Next, the resulting radius and thickness is calculated.
 
 ### 3) Output
 
-When the volume of the shell is calculated to be below 0, the microcapsuel is assumed to have burst, and the volume inside the microcapsule is added to a list of the total volume released at each step. 
+When the volume of the shell is calculated to be below 0, the microcapsule is assumed to have burst, and the volume inside the microcapsule is added to a list of the total volume released at each step. 
 
 The volume of the remover is subtracted from the total volume released at each step.
 
