@@ -45,7 +45,7 @@ std::vector<std::string> split(std::string val, const std::string &delimiter) {
     return res;
 }
 
-class Particle {
+class Microcapsule {
 public:
     double radius;
     double initialRadius;
@@ -53,7 +53,7 @@ public:
     double initialThickness;
     bool burst;
 
-    Particle(double radius_, double thickness_, bool burst_) : radius(radius_), thickness(thickness_), burst(burst_) {
+    Microcapsule(double radius_, double thickness_, bool burst_) : radius(radius_), thickness(thickness_), burst(burst_) {
         this->initialRadius = radius;
         this->initialThickness = thickness;
     }
@@ -66,7 +66,7 @@ public:
     double thickness;
     double tUncertainty;
     int num;
-    std::vector<Particle> particles;
+    std::vector<Microcapsule> microcapsules;
     std::vector<double> volReleased;
 
     Substance(float radius_, float rUncertainty_, float thickness_, float tUncertainty_, int num_, int length) : radius(
@@ -75,8 +75,8 @@ public:
         std::vector<double> thicknesses = normalDistribution(thickness, tUncertainty, num);
 
         for (int i = 0; i < num; ++i) {
-            Particle p = Particle(radii[i], thicknesses[i], false);
-            particles.push_back(p);
+            Microcapsule p = Microcapsule(radii[i], thicknesses[i], false);
+            microcapsules.push_back(p);
         }
         volReleased.reserve(length);
         volReleased.push_back(0);
@@ -136,38 +136,38 @@ int main() {
 
         double vols[5] = {taste1[i - 1], 0, 0, 0, 0};
         for (int j = 0; j < 4; ++j) {
-            for (Particle &removerParticle: removers[j].particles) {
-                if (!removerParticle.burst) {
-                    double volOfShell = CONSTANT * (pow(removerParticle.radius, 3) -
-                                                    pow(removerParticle.initialRadius -
-                                                        removerParticle.initialThickness, 3));
+            for (Microcapsule &removerMicrocapsule: removers[j].microcapsules) {
+                if (!removerMicrocapsule.burst) {
+                    double volOfShell = CONSTANT * (pow(removerMicrocapsule.radius, 3) -
+                                                    pow(removerMicrocapsule.initialRadius -
+                                                        removerMicrocapsule.initialThickness, 3));
                     volOfShell -= volRemovedPerStep;
-                    if (volOfShell <= 0 && !removerParticle.burst) {
-                        vols[j] -= CONSTANT * pow(removerParticle.radius, 3);
-                        removerParticle.burst = true;
+                    if (volOfShell <= 0 && !removerMicrocapsule.burst) {
+                        vols[j] -= CONSTANT * pow(removerMicrocapsule.radius, 3);
+                        removerMicrocapsule.burst = true;
                     } else {
                         volOfShell += CONSTANT *
-                                      pow(removerParticle.initialRadius - removerParticle.initialThickness, 3);
-                        removerParticle.radius = pow(volOfShell / CONSTANT, 1.0 / 3.0);
-                        removerParticle.thickness = removerParticle.initialThickness - removerParticle.initialRadius +
-                                                    removerParticle.radius;
+                                      pow(removerMicrocapsule.initialRadius - removerMicrocapsule.initialThickness, 3);
+                        removerMicrocapsule.radius = pow(volOfShell / CONSTANT, 1.0 / 3.0);
+                        removerMicrocapsule.thickness = removerMicrocapsule.initialThickness - removerMicrocapsule.initialRadius +
+                                                    removerMicrocapsule.radius;
                     }
                 }
             }
         }
         for (int j = 0; j < 4; ++j) {
-            for (Particle &particle: tastes[j].particles) {
-                if (!particle.burst) {
-                    double volOfShell = CONSTANT * (pow(particle.radius, 3) -
-                                                    pow(particle.initialRadius - particle.initialThickness, 3));
+            for (Microcapsule &microcapsule: tastes[j].microcapsules) {
+                if (!microcapsule.burst) {
+                    double volOfShell = CONSTANT * (pow(microcapsule.radius, 3) -
+                                                    pow(microcapsule.initialRadius - microcapsule.initialThickness, 3));
                     volOfShell -= volRemovedPerStep;
-                    if (volOfShell <= 0 && !particle.burst) {
-                        vols[j + 1] += CONSTANT * pow(particle.radius, 3);
-                        particle.burst = true;
+                    if (volOfShell <= 0 && !microcapsule.burst) {
+                        vols[j + 1] += CONSTANT * pow(microcapsule.radius, 3);
+                        microcapsule.burst = true;
                     } else {
-                        volOfShell += CONSTANT * pow(particle.initialRadius - particle.initialThickness, 3);
-                        particle.radius = pow(volOfShell / CONSTANT, 1.0 / 3.0);
-                        particle.thickness = particle.initialThickness - particle.initialRadius + particle.radius;
+                        volOfShell += CONSTANT * pow(microcapsule.initialRadius - microcapsule.initialThickness, 3);
+                        microcapsule.radius = pow(volOfShell / CONSTANT, 1.0 / 3.0);
+                        microcapsule.thickness = microcapsule.initialThickness - microcapsule.initialRadius + microcapsule.radius;
                     }
                 }
             }
