@@ -48,6 +48,8 @@ At the end of the simulation, the program writes all this data to a file.
 
 The code was written in C++ 14 and compiled using [GCC](https://gcc.gnu.org/) 6.3.0
 
+I initially wrote the code in python but the program got too slow when I added more microcapsules so I switched to C++.
+
 ### Normal Distribution
 
 The normal distribution was created using `std::normal_distribution`.
@@ -64,7 +66,7 @@ There are 2 classes, `Microcapsule` and `Substance`.
 
 ## Visualisation
 
-Graphs obtained were visualised using [Mathematica](https://www.wolfram.com/mathematica/). 
+Data obtained was plotted and visualised using [Mathematica](https://www.wolfram.com/mathematica/). 
 
 ### Graphs
 
