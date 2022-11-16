@@ -62,17 +62,17 @@ public:
 class Substance {
 public:
     double radius;
-    double rUncertainty;
+    double rSigma;
     double thickness;
-    double tUncertainty;
+    double tSigma;
     int num;
     std::vector<Microcapsule> microcapsules;
     std::vector<double> volReleased;
 
     Substance(float radius_, float rUncertainty_, float thickness_, float tUncertainty_, int num_, int length) : radius(
-            radius_), rUncertainty(rUncertainty_), thickness(thickness_), tUncertainty(tUncertainty_), num(num_) {
-        std::vector<double> radii = normalDistribution(radius, rUncertainty, num);
-        std::vector<double> thicknesses = normalDistribution(thickness, tUncertainty, num);
+            radius_), rSigma(rUncertainty_), thickness(thickness_), tSigma(tUncertainty_), num(num_) {
+        std::vector<double> radii = normalDistribution(radius, rSigma, num);
+        std::vector<double> thicknesses = normalDistribution(thickness, tSigma, num);
 
         for (int i = 0; i < num; ++i) {
             Microcapsule p = Microcapsule(radii[i], thicknesses[i], false);
@@ -85,19 +85,18 @@ public:
 
 int main() {
 
-
     std::string FILENAME = "data.csv";
     const double CONSTANT = 4.0 / 3.0 * M_PI;
 
-//    int num1 = 360000000;
-//    int num1Remover = 80000;
-//    int num2 = 99000;
-//    int num3 = 61000;
-//    int num4 = 42000;
-//    int num5 = 15600;
-//
-//    int length = 25000;
-//    double volRemovedPerStep = 1;
+    //    int num1 = 360000000;
+    //    int num1Remover = 80000;
+    //    int num2 = 99000;
+    //    int num3 = 61000;
+    //    int num4 = 42000;
+    //    int num5 = 15600;
+    //
+    //    int length = 25000;
+    //    double volRemovedPerStep = 1;
 
     int num1 = 230000000;
     int num1Remover = 15800;
@@ -194,8 +193,8 @@ int main() {
 
     std::cout << "Attempting to open file " << FILENAME << "... ";
 
-    struct stat buffer;
     int count = 1;
+    struct stat buffer;
     std::vector<std::string> list = split(FILENAME, ".");
     list[list.size() - 2] += " (" +  std::to_string(count) + ")";
     while (stat(FILENAME.c_str(), &buffer) == 0) {

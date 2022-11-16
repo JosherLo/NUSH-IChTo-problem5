@@ -22,7 +22,7 @@ The program simulates the breakdown of the microcapsule starch wall by enzyme am
 
 - The radius is defined as the distance from the center of the microcapsule to the edge of the shell, and not the center of the shell (in other words, the radius includes the wall thickness).
 
-- The reactions to remove all the flavours are instantaneous and goes to completion.
+- The reactions to remove all the flavours are **instantaneous** and **goes to completion**.
 
 ### 1) Normal Distribution
 
@@ -44,9 +44,27 @@ The volume of the remover is subtracted from the total volume released at each s
 
 At the end of the simulation, the program writes all this data to a file.
 
+## Code
+
+The code was written in C++ 14 and compiled using [GCC](https://gcc.gnu.org/) 6.3.0
+
+### Normal Distribution
+
+The normal distribution was created using `std::normal_distribution`.
+
+Use `std::normal_distribution` by including `<random>`.
+
+### Classes
+
+There are 2 classes, `Microcapsule` and `Substance`.
+
+`Microcapsule` contains the `radius`, `thickness`, `initialRadius`, `initialThickness` and `burst`. `burst` specifies if the microcapsule has already burst.
+
+`Substance` contains `radius`, `rSigma`, `thickness`, `tSigma`, `num`, `microcapsules` and `volReleased`. `rSigma` and `tSigma` specify the standard deviation of `radius` and `thickness` respectively. `num` specifies the number of microcapsules. `microcapsules` is a vector of `Microcapsule` objects. `volReleased` is a vector of the volume released at each time step.
+
 ## Visualisation
 
-Graphs obtained were visualised using mathematica. 
+Graphs obtained were visualised using [Mathematica](https://www.wolfram.com/mathematica/). 
 
 ### Graphs
 
