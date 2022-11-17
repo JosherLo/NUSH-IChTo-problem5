@@ -64,6 +64,10 @@ There are 2 classes, `Microcapsule` and `Substance`.
 
 `Substance` contains `radius`, `rSigma`, `thickness`, `tSigma`, `num`, `microcapsules` and `volReleased`. `rSigma` and `tSigma` specify the standard deviation of `radius` and `thickness` respectively. `num` specifies the number of microcapsules. `microcapsules` is a vector of `Microcapsule` objects. `volReleased` is a vector of the volume released at each time step.
 
+### Main Program
+
+At each time step, the program loops through each substance, and then loops through each microcapsule in the substance. If the `microcapsule.burst` is `true`, the program skips to the next microcapsule.
+
 ## Visualisation
 
 Data obtained was plotted and visualised using [Mathematica](https://www.wolfram.com/mathematica/). 
