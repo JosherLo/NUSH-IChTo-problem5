@@ -14,7 +14,7 @@ The program simulates the breakdown of the microcapsule starch wall by enzyme am
                    
 ### Assumptions
 
-Assumptions made in this simulation.
+Assumptions made in this simulation, as discussed in the presentation.
 
 - **Pseudo-zero order** reaction is assumed.
 
