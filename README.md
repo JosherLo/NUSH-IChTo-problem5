@@ -12,7 +12,9 @@ For the first 4 tastes, there are an additional 4 more compounds ("removers"), a
 
 The program simulates the breakdown of the microcapsule starch wall by enzyme amylase and records the volume of the flavour molecule in the microcapsule that has been released at each time step.
                    
-### Notes
+### Assumptions
+
+Assumptions made in this simulation.
 
 - **Pseudo-zero order** reaction is assumed.
 
