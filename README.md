@@ -8,6 +8,20 @@ There are 5 tastes, each stored in a microcapsule. There are 4 different microca
 
 For the first 4 tastes, there are an additional 4 more compounds ("removers"), as described in my presentation. Removers remove the flavour compound from the solution.
 
+## Running the code
+
+### Windows
+
+1. Follow this [tutorial](https://www.freecodecamp.org/news/how-to-install-c-and-cpp-compiler-on-windows/) to install the gcc compiler
+2. Download this repo and open this folder in the terminal by right-clicking and clicking "Open in Terminal"
+3. Type `g++ -std=c++20 main.cpp -o main.exe` and enter to compile the code
+4. Type `main.exe` and enter to run the code
+
+### Mac/Linux
+
+1. Run `make main`
+2. Run `./main`
+
 ## How does it work?
 
 The program simulates the breakdown of the microcapsule starch wall by enzyme amylase and records the volume of substance in the microcapsule that has been released at each time step.

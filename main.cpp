@@ -1,7 +1,8 @@
+#define _USE_MATH_DEFINES
+#include <cmath>
 #include <iostream>
 #include <chrono>
 #include <random>
-#include <cmath>
 #include <vector>
 #include <fstream>
 #include <sstream>
@@ -84,6 +85,8 @@ public:
 };
 
 int main() {
+
+    std::cout << "Starting simulation... " << std::endl;
 
     std::string FILENAME = "data.csv";
     const double CONSTANT = 4.0 / 3.0 * M_PI;
@@ -194,7 +197,8 @@ int main() {
     std::cout << "Attempting to open file " << FILENAME << "... ";
 
     int count = 1;
-    struct stat buffer;
+    struct stat buffer{};
+
     std::vector<std::string> list = split(FILENAME, ".");
     list[list.size() - 2] += " (" +  std::to_string(count) + ")";
     while (stat(FILENAME.c_str(), &buffer) == 0) {
