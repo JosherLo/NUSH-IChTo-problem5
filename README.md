@@ -16,6 +16,7 @@ For the first 4 tastes, there are an additional 4 more compounds ("removers"), a
 2. Download this repo and open this folder in the terminal by right-clicking and clicking "Open in Terminal"
 3. Type `g++ -std=c++20 main.cpp -o main.exe` and enter to compile the code
 4. Type `main.exe` and enter to run the code
+5. The output file will be created in the directory of the program.
 
 ### Mac/Linux
 
@@ -32,7 +33,7 @@ Assumptions made in this simulation, as discussed in the presentation.
 
 - **Pseudo-zero order** reaction is assumed.
 
-- The kinetic constant of amylase does not matter, as only one reaction is taking place. 
+- The kinetic constant of amylase does not matter, as we have assumed that enzymatic activity remains constant, and only one reaction is taking place. 
 
 - Each **time step is relative**. Radius and thickness are measured in micrometers, however this is not necessary, as volume can also be relative.
 
@@ -62,7 +63,7 @@ At the end of the simulation, the program writes all this data to a file.
 
 ## Code
 
-The code was written in C++ 14 and compiled using [GCC](https://gcc.gnu.org/) 6.3.0
+The code was written in C++ 20 and compiled using [GCC](https://gcc.gnu.org/) 12.2.0
 
 I initially wrote the code in python but the program got too slow when I added more microcapsules so I switched to C++.
 
